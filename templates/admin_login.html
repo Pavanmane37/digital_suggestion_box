@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Admin login — The Suggestion Board{% endblock %}
+{% block content %}
+
+<section class="board board-center">
+  <form class="note-card note-card-narrow" method="POST" action="{{ url_for('admin_login') }}">
+    <span class="tape" aria-hidden="true"></span>
+    <h2>Admin login</h2>
+    <p class="hero-sub small">Sign in to review and manage suggestions.</p>
+
+    <div class="field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+    </div>
+
+    <button type="submit" class="btn-primary">Log in</button>
+    
+  </form>
+</section>
+
+{% endblock %}  

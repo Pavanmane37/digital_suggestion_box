@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}The Suggestion Board — Say what's on your mind{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Say it. We're listening.</h1>
+    <p class="hero-sub">A better hostel mess, a fixed water cooler, a fairer timetable &mdash;
+      it starts here. Drop your idea, complaint, or suggestion below and it goes
+      straight to the people who can act on it.</p>
+  </div>
+</section>
+
+<section class="board">
+  <form class="note-card" method="POST" action="{{ url_for('submit') }}">
+    <span class="tape" aria-hidden="true"></span>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="name">Name <span class="optional">(optional)</span></label>
+        <input type="text" id="name" name="name" placeholder="Leave blank to stay anonymous" value="{{ name or '' }}">
+      </div>
+      <div class="field">
+        <label for="email">Email <span class="optional">(optional, if you'd like a reply)</span></label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" value="{{ email or '' }}">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="category">What's this about?</label>
+      <select id="category" name="category" required>
+        <option value="" disabled {% if not category %}selected{% endif %}>Choose a Branch</option>
+        {% for c in categories %}
+          <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="message">Your suggestion</label>
+      <textarea id="message" name="message" rows="6" maxlength="2000"
+        placeholder="Tell us what's working, what isn't, and what you'd change..."
+        required>{{ message or '' }}</textarea>
+      <span class="char-count" data-max="2000">0 / 2000</span>
+    </div>
+
+    <button type="submit" class="btn-primary">Pin it to the board</button>
+    <p class="privacy-note">Suggestions are reviewed by the admin team. Leaving your
+      name is optional, but helps if a follow-up is needed.</p>
+  </form>
+</section>
+
+{% endblock %}
