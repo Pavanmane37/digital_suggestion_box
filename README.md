@@ -1,6 +1,6 @@
 # Digital Suggestion Box
 
-A B.E. Computer Science mini-project: a web app where users can submit
+Mini-project: a web app where users can submit
 suggestions/complaints/ideas, which are stored in a database and reviewed
 by an admin through a dashboard.
 
